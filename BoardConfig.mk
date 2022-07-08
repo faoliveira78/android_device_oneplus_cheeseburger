@@ -55,22 +55,16 @@ PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH := 2127-12-31
 PLATFORM_VERSION := 127
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+TW_USE_FSCRYPT_POLICY := 1
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
 	user_debug=31 \
 	msm_rtb.filter=0x37 \
 	ehci-hcd.park=3 \
-	lpm_levels.sleep_disabled=1 \
-	sched_enable_hmp=1 \
-	sched_enable_power_aware=1 \
 	service_locator.enable=1 \
 	swiotlb=2048 \
-	androidboot.usbconfigfs=true \
-	androidboot.usbcontroller=a800000.dwc3 \
-	firmware_class.path=/vendor/firmware_mnt/image \
-	loop.max_part=7 \
-	androidboot.selinux=permissive
+	loop.max_part=7
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -78,7 +72,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
+TARGET_KERNEL_CONFIG := kernel_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 
 # Platform
@@ -99,6 +93,7 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USES_MKE2FS := true
 
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4

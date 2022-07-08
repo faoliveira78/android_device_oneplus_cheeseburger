@@ -23,7 +23,7 @@ Tree for building Unofficial TWRP for OnePlus 5.
 ## Kernel
 
 Kernel source:
-https://github.com/LineageOS/android_kernel_oneplus_msm8998
+https://github.com/xLexip/android_kernel_oneplus_msm8998
 
 ## Compile
 
@@ -35,12 +35,12 @@ cd ~/android/twrp-11.0
 repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11.0
 ```
 
-Then add to a local manifest (if you don't have .repo/local_manifest then make that directory and make a blank file and name it something like twrp.xml):
+Then add to a local manifest (if you don't have .repo/local_manifests then make that directory and make a blank file and name it something like twrp.xml):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="LineageOS/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="lineage-18.1"/>
+  <project name="xLexip/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="twelve"/>
   <project name="faoliveira78/android_device_oneplus_cheeseburger" path="device/oneplus/cheeseburger" remote="github" revision="android-11"/>
 </manifest>
 ```
