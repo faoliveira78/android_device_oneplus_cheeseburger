@@ -1,5 +1,5 @@
 #
-# Copyright 2017 The Android Open Source Project
+# Copyright 2017 - 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,29 +48,21 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Crypto
-TW_INCLUDE_CRYPTO := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
-TW_INCLUDE_RESETPROP := true
-PLATFORM_SECURITY_PATCH := 2127-12-31
-VENDOR_SECURITY_PATCH := 2127-12-31
 PLATFORM_VERSION := 127
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+PLATFORM_SECURITY_PATCH := 2127-12-31
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+TW_USE_FSCRYPT_POLICY := 1
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
 	user_debug=31 \
 	msm_rtb.filter=0x37 \
 	ehci-hcd.park=3 \
-	lpm_levels.sleep_disabled=1 \
-	sched_enable_hmp=1 \
-	sched_enable_power_aware=1 \
 	service_locator.enable=1 \
 	swiotlb=2048 \
-	androidboot.usbconfigfs=true \
-	androidboot.usbcontroller=a800000.dwc3 \
-	firmware_class.path=/vendor/firmware_mnt/image \
-	loop.max_part=7 \
-	androidboot.selinux=permissive
+	loop.max_part=7
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -78,7 +70,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
+TARGET_KERNEL_CONFIG := kernel_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 
 # Platform
@@ -108,24 +100,25 @@ TARGET_COPY_OUT_VENDOR := vendor
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
     libxml2 \
-    tzdata
+  	vendor.display.config@1.0
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
+		$(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so
 
-# Vintf
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # TWRP specific build flags
 BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := "26"
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -134,11 +127,16 @@ TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_THEME := portrait_hdpi
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_RESETPROP := true
 TW_USE_TOOLBOX := true
-
-#Extra
-BOARD_SUPPRESS_SECURE_ERASE := true
 TW_EXCLUDE_TWRPAPP := true
 TW_HAS_EDL_MODE := true
+
+# TWRP Debug Flags
 TWRP_INCLUDE_LOGCAT:= true
 TARGET_USES_LOGD := true
+TARGET_RECOVERY_DEVICE_MODULES += debuggerd
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
+TARGET_RECOVERY_DEVICE_MODULES += strace
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
