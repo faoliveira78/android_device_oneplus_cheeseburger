@@ -30,8 +30,8 @@ https://github.com/xLexip/android_kernel_oneplus_msm8998
 First repo init the TWRP 12.1 tree:
 
 ```
-mkdir ~/android/twrp-11.0
-cd ~/android/twrp-11.0
+mkdir ~/android/twrp-12.1
+cd ~/android/twrp-12.1
 repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
 ```
 
@@ -55,7 +55,7 @@ To be able to compile you need to cherry-pick the following commits:
 
 ```
 source build/envsetup.sh
-repopick 5405 5540 5653
+repopick 5405 5540
 ```
 
 Finally execute these:
