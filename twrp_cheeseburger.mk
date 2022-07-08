@@ -1,5 +1,5 @@
 #
-# Copyright 2017 The Android Open Source Project
+# Copyright 2017 - 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,13 +29,10 @@ PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
 
-# tzdata
-PRODUCT_PACKAGES += \
-    tzdata_twrp
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.keystore=msm8998 \
     ro.hardware.gatekeeper=msm8998 \
+		ro.vendor.build.security_patch=2127-12-31
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := cheeseburger
