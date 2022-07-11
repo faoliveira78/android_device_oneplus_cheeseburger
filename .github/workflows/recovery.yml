@@ -46,7 +46,6 @@ jobs:
             git config --global user.email "fernandoaju78@gmail.com"
             sudo -E apt-get clean
             sudo -E apt-get -qq update
-            sudo -E apt-get -y -qq upgrade
             sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex bison aria2 libncurses5 libncurses5-dev
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
@@ -61,7 +60,7 @@ jobs:
              mkdir work
              cd work
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
-             repo sync -j4
+             repo sync -j$(nproc --all)
              source build/envsetup.sh
              repopick 5405 5540
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
