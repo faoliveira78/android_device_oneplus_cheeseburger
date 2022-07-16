@@ -26,7 +26,6 @@ env:
   TARGET: recoveryimage
   CHAT_ID: ${{ secrets.TELEGRAM_TO }}
   BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-  TZ: America/Maceio
 
 jobs:
   build:
@@ -76,8 +75,8 @@ jobs:
        - name: Uploading recovery image
          run: |
               cd work/out/target/product/$DEVICE
-              curl -F chat_id=$CHAT_ID -F document=@recovery.img https://api.telegram.org/bot$BOT_TOKEN/sendDocument
-              curl -F chat_id=$CHAT_ID -F document=@Image.gz-dtb https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+              curl -F chat_id=$CHAT_ID -F document=@recovery.img https://api.telegram.org/bot$BOT_TOKEN/sendDocument >& /dev/null
+              curl -F chat_id=$CHAT_ID -F document=@kernel https://api.telegram.org/bot$BOT_TOKEN/sendDocument >& /dev/null
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet Image.gz-dtb
+              ./transfer wet kernel
               ./transfer wet recovery.img
