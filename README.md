@@ -23,7 +23,7 @@ Tree for building Unofficial TWRP for OnePlus 5. (Decryption works on Android 12
 ## Kernel
 
 Kernel source:
-https://github.com/xLexip/android_kernel_oneplus_msm8998
+https://github.com/faoliveira78/android_kernel_oneplus_msm8998
 
 ## Compile
 
@@ -40,7 +40,7 @@ Then add to a local manifest (if you don't have .repo/local_manifests then make 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="xLexip/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="twelve"/>
+  <project name="faoliveira78/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="lineage-19.1"/>
   <project name="faoliveira78/android_device_oneplus_cheeseburger" path="device/oneplus/cheeseburger" remote="github" revision="android-12.1"/>
 </manifest>
 ```
