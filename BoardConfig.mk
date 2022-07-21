@@ -70,7 +70,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := kernel_defconfig
+TARGET_KERNEL_CONFIG := msm8998_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 
 # Platform
