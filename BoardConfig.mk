@@ -23,9 +23,12 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+COMMON_PATH := device/oneplus/cheeseburger
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -66,12 +69,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-#TARGET_PREBUILT_KERNEL := device/oneplus/cheeseburger/prebuilt/Image.gz-dtb
-
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := msm8998_defconfig
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
+TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image.gz-dtb
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
@@ -113,7 +111,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
 	$(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
 	$(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
-
 
 # TWRP specific build flags
 BOARD_HAS_NO_REAL_SDCARD := true
