@@ -1,6 +1,6 @@
 # android_device_oneplus_cheeseburger
 
-Tree for building Unofficial TWRP for OnePlus 5. (Decryption works on Android 12.x ROMs)
+Tree for building Unofficial TWRP for OnePlus 5. (Decryption works on Android Android 12.x and 13 ROMs)
 
 | Basic                   | Spec Sheet                                                                                                                     |
 | -----------------------:|:------------------------------------------------------------------------------------------------------------------------------ |
@@ -40,7 +40,7 @@ Then add to a local manifest (if you don't have .repo/local_manifests then make 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="faoliveira78/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="lineage-19.1"/>
+  <project name="faoliveira78/android_kernel_oneplus_msm8998" path="kernel/oneplus/msm8998" remote="github" revision="lineage-20"/>
   <project name="faoliveira78/android_device_oneplus_cheeseburger" path="device/oneplus/cheeseburger" remote="github" revision="android-12.1"/>
 </manifest>
 ```
