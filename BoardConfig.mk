@@ -65,15 +65,12 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-#TARGET_PREBUILT_KERNEL := device/oneplus/cheeseburger/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := device/oneplus/cheeseburger/prebuilt/Image.gz-dtb
 
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-gnu-
-TARGET_KERNEL_CROSS_COMPILE_PREFIX_ARM32 := arm-linux-gnueabi-
-KERNEL_SUPPORTS_LLVM_TOOLS := true
-TARGET_KERNEL_CONFIG := msm8998_defconfig
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
+#TARGET_KERNEL_ARCH := arm64
+#TARGET_KERNEL_CLANG_COMPILE := true
+#TARGET_KERNEL_CONFIG := msm8998_defconfig
+#TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998

@@ -62,6 +62,8 @@ jobs:
              repo sync -j$(nproc --all)
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
              git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
+             source build/envsetup.sh
+             repopick 6235 6236 6289 6291
 
        - name: Building TWRP
          run: |
