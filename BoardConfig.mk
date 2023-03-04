@@ -53,7 +53,6 @@ PLATFORM_VERSION := 99.87.36
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
-TW_USE_FSCRYPT_POLICY := 1
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
@@ -134,6 +133,8 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_RESETPROP := true
 TW_USE_TOOLBOX := true
 TW_HAS_EDL_MODE := true
+TW_OVERRIDE_SYSTEM_PROPS := \
+    "ro.build.date.utc;ro.build.date;ro.build.fingerprint=ro.system.build.fingerprint"
 
 # TWRP Debug Flags
 TWRP_INCLUDE_LOGCAT:= true
