@@ -23,6 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+COMMON_PATH := device/oneplus/cheeseburger
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -65,7 +67,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_PREBUILT_KERNEL := device/oneplus/cheeseburger/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image.gz-dtb
 
 #TARGET_KERNEL_ARCH := arm64
 #TARGET_KERNEL_CLANG_COMPILE := true
@@ -112,7 +114,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
 	$(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
 	$(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
-
 
 # TWRP specific build flags
 BOARD_HAS_NO_REAL_SDCARD := true
