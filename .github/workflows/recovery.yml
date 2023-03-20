@@ -58,8 +58,13 @@ jobs:
               echo "kernel link does not exist, skipping clone."
              fi
              
-             source build/envsetup.sh
-             repopick 6235 6236 6289 6291
+             if [[ "$MANIFEST" == *"faoliveira78"* ]]; then
+              git -C bootable/recovery fetch https://gerrit.twrp.me/android_bootable_recovery refs/changes/89/6289/1 && git -C bootable/recovery cherry-pick FETCH_HEAD
+              git -C bootable/recovery fetch https://gerrit.twrp.me/android_bootable_recovery refs/changes/63/6363/1 && git -C bootable/recovery cherry-pick FETCH_HEAD
+             else
+              source build/envsetup.sh
+              repopick 6289 6363
+             fi
 
        - name: Building TWRP
          run: |
